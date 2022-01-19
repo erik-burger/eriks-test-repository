@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: deploy
-      run: exit 1
+      run: echo deploy
   
     
   deploy-teams:
@@ -27,7 +27,7 @@ jobs:
       - deploy
     steps:
     - name: Try to fail
-      run: echo test
+      run: exit 1
 
   tests-teams:
     runs-on: ubuntu-latest
