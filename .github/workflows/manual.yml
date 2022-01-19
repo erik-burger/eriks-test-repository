@@ -33,7 +33,10 @@ jobs:
     runs-on: ubuntu-latest
     if: always()
     needs:
+      - deploy
       - tests
     steps:
+    
     - name: teams deploy message
+      if: ${{ needs.tests.result != 'success' }} && ${{ needs.deploy.result == 'success' }}
       run: echo deploy är ok
