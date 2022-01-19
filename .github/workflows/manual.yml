@@ -27,6 +27,7 @@ jobs:
       
   tests-teams:
     runs-on: ubuntu-latest
+    if: always()
     needs:
       - tests
     steps:
