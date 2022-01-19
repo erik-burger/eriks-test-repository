@@ -2,25 +2,33 @@ name: Manual workflow
 on:
   workflow_dispatch:
 jobs:
-  pass-1:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Try to fail
-      run: echo pass-1
+    - name: deploy
+      run: echo deploy
   
     
-  fail-1:
+  deploy-teams:
     runs-on: ubuntu-latest
     needs:
-      - pass-1
+      - deploy
     steps:
-    - name: Try to fail
-      run: exit 1
+    - name: teams deploy message
+      run: echo deploy är ok
   
-  fail-2:
+  tests:
     runs-on: ubuntu-latest
     needs:
-      - fail-1
+      - deploy
     steps:
     - name: Try to fail
       run: exit 1
+      
+  tests-teams:
+    runs-on: ubuntu-latest
+    needs:
+      - tests
+    steps:
+    - name: teams deploy message
+      run: echo deploy är ok
