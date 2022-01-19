@@ -1,5 +1,8 @@
 name: Manual workflow
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 jobs:
   deploy:
@@ -11,6 +14,7 @@ jobs:
     
   deploy-teams:
     runs-on: ubuntu-latest
+    if: always()
     needs:
       - deploy
     steps:
@@ -27,7 +31,7 @@ jobs:
       
   tests-teams:
     runs-on: ubuntu-latest
-    if: always()
+    if: ${{ needs.deploy.result == 'success' }}
     needs:
       - tests
     steps:
