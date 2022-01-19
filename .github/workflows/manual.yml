@@ -39,5 +39,6 @@ jobs:
     - name: teams deploy message
       if: ${{ needs.tests.result != 'success' && needs.deploy.result == 'success' }}
       run: |
+        echo $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
         echo deploy är ok ${{ needs.deploy.result }}
         echo tests är ok ${{ needs.tests.result }}
