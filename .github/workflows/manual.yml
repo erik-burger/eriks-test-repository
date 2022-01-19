@@ -31,7 +31,7 @@ jobs:
       
   tests-teams:
     runs-on: ubuntu-latest
-    if: ${{ needs.deploy.result == 'success' }}
+    if: ${{ needs.deploy.result == 'success' }} && always()
     needs:
       - tests
     steps:
