@@ -27,7 +27,7 @@ jobs:
       - deploy
     steps:
     - name: Try to fail
-      run: exit 1
+      run: echo test
 
   tests-teams:
     runs-on: ubuntu-latest
