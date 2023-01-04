@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Is variable exported?
         run: |
-          echo ${{ github.event.tags }}
+          echo ${{ github.event }}
