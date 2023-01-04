@@ -21,7 +21,7 @@ jobs:
   create-release:
     name: Create release
     if: ${{  github.ref_type == 'tag' }} 
-    needs: [build]
+    needs: [testing]
     runs-on: ubuntu-latest
 
     steps:
