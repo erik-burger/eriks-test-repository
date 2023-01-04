@@ -1,0 +1,20 @@
+name: Testing
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Eriks test run
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Fetch tags for GitVersion
+        run: |
+          echo ${{ github.ref_name }}
+          echo ${{ github.ref }}
+          gh release list 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
