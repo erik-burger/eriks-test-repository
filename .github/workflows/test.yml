@@ -15,6 +15,6 @@ jobs:
         run: |
           echo ${{ github.ref_name }}
           echo ${{ github.ref }}
-          gh release view first-release6 --json
+          gh release view first-release6 --json body
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
