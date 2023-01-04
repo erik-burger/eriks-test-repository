@@ -24,7 +24,7 @@ jobs:
 
       - name: Delete draft release 
         run: |
-          gh release view draft_release >> notes.txt
+          gh release view draft_release >> notes/notes.txt
           gh release delete draft_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -33,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: notes.txt
-          path: /
+          path: notes
