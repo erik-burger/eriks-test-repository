@@ -7,10 +7,6 @@ on:
         description: 'Last released version from where release notes shall be generated'
         required: true
         type: string
-      tags:
-        type: environment
-
-
 
 jobs:
   build:
@@ -20,10 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Fetch tags for GitVersion
+      - name: Create Draft release 
         run: |
-          echo ${{ github.ref_name }}
-          echo ${{ github.ref }}
           gh release create draft_release --draft --generate-notes --notes-start-tag last_released_version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -34,7 +28,6 @@ jobs:
       - name: Delete draft release 
         run: |
           gh release view draft_release >> notes.txt
-          gh release delete draft_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
