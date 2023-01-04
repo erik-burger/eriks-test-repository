@@ -15,7 +15,7 @@ jobs:
         run: |
           echo ${{ github.ref_name }}
           echo ${{ github.ref }}
-          gh release create draft_release --draft --generate-notes
+          gh release create draft_release --draft --generate-notes --notes-start-tag first-release3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
@@ -24,8 +24,13 @@ jobs:
 
       - name: Delete draft release 
         run: |
-          gh release view draft_release
+          gh release view draft_release >> notes.txt
           gh release delete draft_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Upload notes
+        uses: actions/upload-artifact@main
+        with:
+          name: notes.txt
+          path: ""
