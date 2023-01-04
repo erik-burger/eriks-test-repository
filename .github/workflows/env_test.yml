@@ -17,7 +17,14 @@ jobs:
           cat << OBJECT
           ${{ toJson(github) }}
           OBJECT
+        
+  create-release:
+    name: Create release
+    if: ${{  github.ref_type == 'tag' }} 
+    needs: [testing]
+    runs_on: ubuntu-latest
 
+    steps:
       - name: Is tag or branch
         if: ${{  github.ref_type == 'tag' }} 
         run: | 
@@ -26,5 +33,3 @@ jobs:
           gh release create ${{ github.ref_name }} --generate-notes  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
-    
