@@ -7,6 +7,10 @@ on:
         description: 'Last released version from where release notes shall be generated'
         required: true
         type: string
+      tags:
+        type: environment
+
+
 
 jobs:
   build:
