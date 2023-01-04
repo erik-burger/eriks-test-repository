@@ -17,6 +17,5 @@ jobs:
           echo ${{ github.ref }}
           gh release create draft_release --draft --generate-notes
           gh release view draft_release
-          gh release delete draft_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
