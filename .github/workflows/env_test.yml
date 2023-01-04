@@ -28,8 +28,6 @@ jobs:
       - uses: actions/checkout@v3
       - name: Create release
         run: | 
-          echo ${{ github.ref_name }}
-          echo ${{ github.ref }}
           gh release create ${{ github.ref_name }} --generate-notes  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
