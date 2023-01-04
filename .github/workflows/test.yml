@@ -15,7 +15,7 @@ jobs:
         run: |
           echo ${{ github.ref_name }}
           echo ${{ github.ref }}
-          gh release create draft_release --draft --generate-notes --notes-start-tag first-release3
+          gh release create draft_release --draft --generate-notes --notes-start-tag first-release3 -h
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
