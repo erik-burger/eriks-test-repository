@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - main
+    tags:
+      - '*'
 
-env:
-  somevar: 'lastvar'
 jobs:
   show:
     runs-on: ubuntu-latest
     steps:
       - name: Is variable exported?
         run: |
-          echo "${{ env.somevar }}"
+          echo ${{ github.event.tags }}
