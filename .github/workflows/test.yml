@@ -15,6 +15,8 @@ jobs:
         run: |
           echo ${{ github.ref_name }}
           echo ${{ github.ref }}
-          echo ${{ fromJson(gh release view first-release6 --json body).body }} 
+          gh release create draft_release --draft --generate-notes
+          gh release view first-release6
+          gh release delete draft_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
