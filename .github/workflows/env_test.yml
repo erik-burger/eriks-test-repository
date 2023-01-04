@@ -21,8 +21,8 @@ jobs:
   create-release:
     name: Create release
     if: ${{  github.ref_type == 'tag' }} 
-    needs: [testing]
-    runs_on: ubuntu-latest
+    needs: [build]
+    runs-on: ubuntu-latest
 
     steps:
       - name: Is tag or branch
