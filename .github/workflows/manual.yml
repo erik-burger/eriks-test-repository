@@ -5,37 +5,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: deploy
-      run: echo deploy ok
-    
-  deploy-teams:
-    runs-on: ubuntu-latest
-    if: always()
-    needs:
-      - deploy
-    steps:
-    - name: teams deploy message
-      run: echo deploy är ok
-  
-  tests:
-    runs-on: ubuntu-latest
-    needs:
-      - deploy
-    steps:
-    - name: Try to fail
-      run: exit 1
-
-  tests-teams:
-    runs-on: ubuntu-latest
-    if: always()
-    needs:
-      - deploy
-      - tests
-    steps:
-    
-    - name: teams deploy message
-      if: ${{ needs.tests.result != 'success' && needs.deploy.result == 'success' }}
+    - name: declare
       run: |
-        echo $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-        echo deploy är ok ${{ needs.deploy.result }}
-        echo tests är ok ${{ needs.tests.result }}
+        echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
+        echo "This is a string ${SHORT_SHA}" 
+
+  
