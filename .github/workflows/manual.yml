@@ -12,6 +12,6 @@ jobs:
 
     - name: Print
       run: |
-        echo "thisis a string $SHORT_SHA" 
+        echo "thisis a string $IMAGE_NAME" 
 
   
