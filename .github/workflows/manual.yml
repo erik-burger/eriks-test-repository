@@ -11,6 +11,6 @@ jobs:
 
     - name: Print
       run: |
-        echo "$SHORT_SHA" 
+        echo "thisis a string ${SHORT_SHA}" 
 
   
