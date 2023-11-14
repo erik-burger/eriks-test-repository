@@ -7,7 +7,8 @@ jobs:
     steps:
     - name: declare
       run: |
-        echo "SHORT_SHA=yellow" >> "$GITHUB_ENV"
+          SHORT_SHA="$(echo Green)" 
+          "IMAGE_NAME=localhost/explore-listener-image:$SHORT_SHA" >> "$GITHUB_ENV"
 
     - name: Print
       run: |
