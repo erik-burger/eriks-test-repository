@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: declare
       run: |
-          "SHORT_SHA=Green" >> "$GITHUB_ENV"
+          echo "SHORT_SHA=Green" >> "$GITHUB_ENV"
 
     - name: Print
       run: |
