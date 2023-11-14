@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: declare
       run: |
-        echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
+        echo "SHORT_SHA=hjeeee" >> "$GITHUB_ENV"
         echo "This is a string $SHORT_SHA" 
 
   
